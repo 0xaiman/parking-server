@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import submitBooking from './controllers/booking.controller.js';
-import dbInit from './db_connection/connection.js';
+import dbInit from '../db_connection/connection.js';
+import submitBooking from '../controllers/booking.controller.js';
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 
 // db initialization
-dbInit();
+dbInit()
 
 
 // test
