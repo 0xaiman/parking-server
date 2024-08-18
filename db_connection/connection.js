@@ -1,14 +1,19 @@
 import pkg from 'pg';
+import dotenv from 'dotenv';
 import createBookingTable from '../models/createBookingTable.js';
+
+
+// Load environment variables from .env file
+dotenv.config();
 
 const {Pool} = pkg
 
 // Set up the connection configuration
 export const pool = new Pool({
-  user: process.env.DB_USER || 'postgres',
-  host: process.env.DB_HOST || 'localhost',
-  database: process.env.DB_NAME || 'parking',
-  password: process.env.DB_PASSWORD || 'password',
+  user: process.env.POSTGRES_USER ,
+  host: process.env.POSTGRES_HOST ,
+  database: process.env.POSTGRES_DATABASE ,
+  password: process.env.POSTGRES_PASSWORD,
   port: process.env.DB_PORT || 5432,
   max: 10, // Maximum number of connections in the pool
   idleTimeoutMillis: 30000, // Close idle clients after 30 seconds
